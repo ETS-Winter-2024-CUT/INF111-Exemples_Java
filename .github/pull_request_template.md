@@ -1,32 +1,37 @@
-## Résumé des modifications
+## Description de la Pull Request
 
-Expliquez brièvement les modifications apportées par cette pull request.
+### Description brève des modifications
 
-## Détail des modifications
+Expliquez brièvement le but général des modifications apportées par cette pull 
+    request.
 
-Veuillez expliquer les modifications apportées par cette pull request.
-Indiquez clairement et de manière concise ce que fait cette modification.
+### Détail des modifications
 
-## Objectif/Problème résolu (le cas échéant)
+Veuillez expliquer en détail les changements effectués par cette pull request. 
+Présentez de manière concise ce que fait chaque modification.
 
-Détaillez l'objectif de cette pull request; qu'est-ce qu'elle apporte et pourquoi?
-Si cette demande de pull request résout un problème ou une tâche spécifique, veuillez le mentionner
-ici en utilisant des balises comme "Fixes #numéro-du-ticket" ou "Résout le problème de [description]".
+### Objectif des modifications/Problème résolu (le cas échéant)
 
-## Captures d'écran (le cas échéant)
+Décrivez précisément l'objectif de cette pull request.
+Expliquez pourquoi ces modifications sont nécessaires et comment elles améliorent ou résolvent des 
+    problèmes spécifiques. 
+Utilisez des balises comme "Fixes #numéro-du-ticket" ou "Résout le problème de [description]" si 
+    applicable.
 
-Si cela est pertinent, incluez des captures d'écran ou des gifs animés pour illustrer visuellement
-les modifications effectuées.
+### Captures d'écran (le cas échéant)
 
-## Étapes de vérification
+Si pertinent, incluez des captures d'écran ou des gifs animés pour illustrer visuellement les 
+    modifications apportées.
 
-Décrivez les étapes que le relecteur doit suivre pour vérifier vos modifications :
+### Étapes de vérification
+
+Fournissez des étapes détaillées que le relecteur peut suivre pour vérifier vos modifications :
 
 1. Étape 1...
 2. Étape 2...
 3. etc.
 
-## Notes pour le relecteur
+### Notes pour le relecteur
 
-Ajoutez ici des informations supplémentaires ou des points spécifiques auxquels le relecteur devrait
-prêter une attention particulière lors de l'examen de cette demande de pull request.
+Incluez ici des informations supplémentaires pertinentes ou des points spécifiques sur lesquels le 
+    relecteur devrait se concentrer lors de l'examen de cette demande de pull request.
