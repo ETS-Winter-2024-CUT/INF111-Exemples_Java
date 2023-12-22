@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Ce script est concu pour effectuer des verifications specifiques dans les \
-    fichiers de code, telles que la longueur des lignes et la structure des \
-    en-tetes de fichier.
+Ce script est conçu pour effectuer des contrôles spécifiques sur des fichiers \
+    de code, tels que la longueur des lignes les commentaires d'en-têtes.
 """
 import glob
 import os
@@ -35,7 +34,7 @@ def verify_ruler(lines: list[str], ruler: int) -> bool:
 
 
 def verify_header_comment(lines: list[str]):
-    # Find the index where the imports end
+    # Trouver l'index où les importations se terminent
     import_end_index = len(lines)
 
     for i, line in enumerate(lines):
@@ -43,10 +42,10 @@ def verify_header_comment(lines: list[str]):
             import_end_index = i
             break
 
-    # Combine lines after imports to search for header comment
+    # Combiner les lignes après les importations pour rechercher l'en-tête
     rest_of_code = "".join(lines[import_end_index:])
 
-    # Define the regex pattern to match the header comment
+    # Définir le motif regex qui correspond au commentaire de l'en-tête
     pattern = r"/\*.*?\*/"
     header_comment = re.search(pattern, rest_of_code, re.DOTALL)
 

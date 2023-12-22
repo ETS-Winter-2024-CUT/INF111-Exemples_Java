@@ -1,7 +1,7 @@
 name: Verification de la synthaxe
 
 on:
-  # Trigger the workflow on pull requests when a Java file is modified.
+  # Déclencher le workflow sur les PRs lorsqu'un fichier Java est modifié.
   pull_request:
     paths:
       - '**.java'
