@@ -1,0 +1,19 @@
+name: Verification de la synthaxe
+
+on:
+  # Trigger the workflow on pull requests when a Java file is modified.
+  pull_request:
+    paths:
+      - '**.java'
+
+jobs:
+  c-linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@main
+
+      - name: Execution du script Python de validation du code Java
+        run: python linter.py "*.java"
+        id: validation
