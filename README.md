@@ -31,7 +31,8 @@ Nous encourageons vivement les contributions de la part de tous les membres de l
 Si vous souhaitez ajouter de nouveaux exemples de code, améliorer ceux existants ou corriger des 
 erreurs, veuillez suivre ces étapes :
 
-1. Forker le dépôt.
+1. Si nécessaire demandez à un administrateur de l'organisation de vous ajouter en tant que 
+    collaborateur.
 2. Créer une branche pour vos modifications :
    ```
    git checkout -b feature/ameliorations
