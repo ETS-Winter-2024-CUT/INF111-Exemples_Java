@@ -19,13 +19,13 @@ public class ValiderEntreBornesConstantes {
         int valeur;
 
         do {
-            System.out.println("Entrez une valeur comprise entre " + VALEUR_MIN + " et " +
-                    VALEUR_MAX + " (inclus) : ");
+            System.out.printf("Entrez une valeur comprise entre %d et %d (inclus) : ",
+                    VALEUR_MIN, VALEUR_MAX);
             valeur = scanner.nextInt();
 
             if (valeur < VALEUR_MIN || valeur > VALEUR_MAX) {
-                System.out.println("Erreur, " + valeur + " n'est pas compris entre " + VALEUR_MIN +
-                        " et " + VALEUR_MAX + "!");
+                System.out.printf("Erreur, %d n'est pas compris entre %d et %d!\n",
+                        valeur, VALEUR_MIN, VALEUR_MAX);
             }
         } while (valeur < VALEUR_MIN || valeur > VALEUR_MAX);
 
