@@ -57,8 +57,10 @@ public class PrixCoopETS {
         double total = sous_total;
 
         // Vérification si le sous-total dépasse le seuil pour appliquer une réduction
-        if (sous_total > SEUIL_REDUCTION) {
+        if (sous_total >= SEUIL_REDUCTION) {
             double application_reduction = total * REDUCTION;
+            System.out.printf("Application de la reduction (-%.2f%%): $-%.2f\n",
+                    (REDUCTION * 100), application_reduction);
             total -= application_reduction;
         }
 
