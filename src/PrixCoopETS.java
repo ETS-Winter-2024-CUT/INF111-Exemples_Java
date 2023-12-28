@@ -32,7 +32,7 @@ public class PrixCoopETS {
     }
 
     // Fonction pour calculer le sous-total des achats
-    public static double calculSousTotal(Scanner scanner) {
+    private static double calculSousTotal(Scanner scanner) {
         double sous_total = 0;
 
         boolean continuer = true;
@@ -66,19 +66,19 @@ public class PrixCoopETS {
     }
 
     // Fonction pour calculer le montant des taxes
-    public static double calculTaxes(double total) {
+    private static double calculTaxes(double total) {
         double taxes = total * TAXES;
         System.out.printf("Taxes: $%.2f\n", taxes);
         return taxes;
     }
 
     // Fonction pour afficher le sous-total
-    public static void afficherSousTotal(double sous_total) {
+    private static void afficherSousTotal(double sous_total) {
         System.out.printf("Sous-total: $%.2f\n", sous_total);
     }
 
     // Fonction pour afficher le total
-    public static void afficherTotal(double total) {
+    private static void afficherTotal(double total) {
         System.out.printf("Total: $%.2f\n", total);
     }
 }
