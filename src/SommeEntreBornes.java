@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-/*
-    Programme permettant de calculer la somme de plusieurs entiers saisis au clavier, 
-        compris dans l'intervalle 1 à 10.
-*/
+/**
+ * Programme permettant de calculer la somme de plusieurs entiers saisis au clavier, 
+ *  compris dans l'intervalle 1 à 10.
+ */
 
 public class SommeEntreBornes {
     // Définition des constantes
