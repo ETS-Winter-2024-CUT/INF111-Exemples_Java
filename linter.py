@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Ce script est conçu pour effectuer des contrôles spécifiques sur des fichiers \
-    de code, tels que la longueur des lignes les commentaires d'en-têtes.
+    de code, tels que la longueur des lignes et les Javadocs.
 """
 import glob
 import os
@@ -13,7 +13,7 @@ EXIT_STATUS_SUCCESS = 0
 EXIT_STATUS_FAILURE = 1
 
 # Default settings
-DEFAULT_RULER = 80
+DEFAULT_RULER = 100
 
 
 def print_error(line_num, message) -> None:
@@ -33,7 +33,7 @@ def verify_ruler(lines: list[str], ruler: int) -> bool:
     return success_status
 
 
-def verify_header_comment(lines: list[str]):
+def verify_javadoc(lines: list[str]):
     # Trouver l'index où les importations se terminent
     import_end_index = len(lines)
 
@@ -42,14 +42,18 @@ def verify_header_comment(lines: list[str]):
             import_end_index = i
             break
 
-    # Combiner les lignes après les importations pour rechercher l'en-tête
+    # Combiner les lignes après les importations pour rechercher du Javadoc
     rest_of_code = "".join(lines[import_end_index:])
 
-    # Définir le motif regex qui correspond au commentaire de l'en-tête
-    pattern = r"/\*.*?\*/"
+    # Définir le motif regex qui correspond au Javadoc
+    pattern = r"/\/\*\*(?:.|\r?\n)*?\*\//"
     header_comment = re.search(pattern, rest_of_code, re.DOTALL)
 
-    return EXIT_STATUS_SUCCESS if header_comment else EXIT_STATUS_FAILURE
+    if header_comment:
+        return EXIT_STATUS_SUCCESS
+
+    print_error(i, f"Il manque un Javadoc a ce fichier.")
+    return EXIT_STATUS_FAILURE
 
 
 def main(files: list[list]) -> bool:
@@ -65,7 +69,7 @@ def main(files: list[list]) -> bool:
         with open(filename, "r") as f:
             lines = f.readlines()
 
-            if verify_header_comment(lines) == EXIT_STATUS_FAILURE:
+            if verify_javadoc(lines) == EXIT_STATUS_FAILURE:
                 exit_status = EXIT_STATUS_FAILURE
 
             if verify_ruler(lines, DEFAULT_RULER) == EXIT_STATUS_FAILURE:
