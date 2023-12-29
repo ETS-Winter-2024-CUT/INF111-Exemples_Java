@@ -1,5 +1,13 @@
 import java.util.Scanner;
 
+/*
+ * Ce code Java permet à l'utilisateur de spécifier un nombre de valeurs, puis saisit ces valeurs et
+ *  trouve la plus grande parmi elles. 
+ * Il utilise les méthodes `saisir_entier_positif` pour obtenir un nombre valide de valeurs à 
+ *  comparer et `trouver_max` pour déterminer la plus grande valeur parmi celles saisies. 
+ * Ensuite, il affiche la plus grande valeur.
+ */
+
 public class MaxN {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -30,16 +38,16 @@ public class MaxN {
     // Méthode pour trouver la valeur maximale parmi les valeurs saisies
     private static double trouver_max(Scanner scanner, int nombre_valeurs) {
         System.out.printf("Entrez %d valeurs:\n", nombre_valeurs);
-        
+
         // Initialise la variable max avec une valeur minimale possible
-        double max = Double.NEGATIVE_INFINITY; 
+        double max = Double.NEGATIVE_INFINITY;
 
         for (int i = 0; i < nombre_valeurs; i++) {
             double nouvelle_valeur = scanner.nextDouble(); // Saisie de la nouvelle valeur
 
             // Mise à jour de la valeur maximale si la nouvelle valeur est plus grande
             if (nouvelle_valeur > max)
-                max = nouvelle_valeur; 
+                max = nouvelle_valeur;
         }
 
         return max; // Retourne la valeur maximale parmi celles saisies
