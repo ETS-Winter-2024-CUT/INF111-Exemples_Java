@@ -17,8 +17,12 @@ public class MaxN {
     }
 
     private static int saisir_entier_positif(Scanner scanner) {
-        System.out.println("Entrez le nombre de valeurs a comparer:");
-        int valeur = scanner.nextInt();
+        int valeur;
+
+        do {
+            System.out.println("Entrez le nombre de valeurs a comparer:");
+            valeur = scanner.nextInt();
+        } while (valeur < 2);
 
         return valeur;
     }
