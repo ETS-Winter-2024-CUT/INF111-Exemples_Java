@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-/*
+/**
  * Programme Java pour calculer le prix total des achats avec des réductions et des taxes
-*/
+ */
 
 public class PrixCoopETS {
     // Définition des constantes pour les taxes, la réduction et le seuil de réduction
