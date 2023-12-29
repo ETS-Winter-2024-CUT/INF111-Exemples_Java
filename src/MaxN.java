@@ -24,11 +24,11 @@ public class MaxN {
     }
 
     private static double trouver_max(Scanner scanner, int nombre_valeurs) {
-        System.out.printf("Entrez %d valeurs: ", nombre_valeurs);
+        System.out.printf("Entrez %d valeurs:\n", nombre_valeurs);
 
-        double max = scanner.nextDouble();
+        double max = Double.NEGATIVE_INFINITY;
 
-        for (int i = 0; i < nombre_valeurs - 1; i++) {
+        for (int i = 0; i < nombre_valeurs; i++) {
             double nouvelle_valeur = scanner.nextDouble();
 
             if (nouvelle_valeur > max)
