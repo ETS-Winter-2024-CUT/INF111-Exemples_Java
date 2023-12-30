@@ -34,9 +34,13 @@ public class ManipulationListeEntiers {
         // Calcul et affichage de la somme des éléments de la liste
         int somme = 0;
 
-        for (int element : liste_entiers) {
+        /*
+         * l'opérateur `:` est utilisé dans une structure de boucle for améliorée (ou for-each) 
+         * pour itérer à travers les éléments d'une collection telle qu'une liste, un tableau ou 
+         * toute autre structure de données itérable.
+         */
+        for (int element : liste_entiers)
             somme += element; // Ajoute chaque élément à la somme
-        }
 
         System.out.println("La somme des elements est " + somme);
 
