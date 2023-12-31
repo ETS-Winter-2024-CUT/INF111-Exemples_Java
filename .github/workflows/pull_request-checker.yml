@@ -10,20 +10,42 @@ jobs:
 
     steps:
       - name: Verifier le nom de la branche
-        if: github.event_name != 'pull_request' || startsWith(github.event.pull_request.head.ref, 'feature/') || startsWith(github.event.pull_request.head.ref, 'fix/') || startsWith(github.event.pull_request.head.ref, 'release/') || startsWith(github.event.pull_request.head.ref, 'hotfix/') || startsWith(github.event.pull_request.head.ref, 'docs/') || startsWith(github.event.pull_request.head.ref, 'refactor/') || startsWith(github.event.pull_request.head.ref, 'experiment/') || startsWith(github.event.pull_request.head.ref, 'chore/') || startsWith(github.event.pull_request.head.ref, 'devops/')
-        run: echo "Nom de branche valide"
-      
+        run: |
+          if [[ $GITHUB_EVENT_NAME != 'pull_request' || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'feature/') }} || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'fix/') }} || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'release/') }} || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'hotfix/') }} || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'docs/') }} || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'refactor/') }} || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'experiment/') }} || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'chore/') }} || \
+                ${{ startsWith(github.event.pull_request.head.ref, 'devops/') }} ]]; then
+            echo "Nom de branche valide"
+          fi
+
       - name: Nom de branche invalide
-        if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.head.ref, 'feature/') && !startsWith(github.event.pull_request.head.ref, 'fix/') && !startsWith(github.event.pull_request.head.ref, 'release/') && !startsWith(github.event.pull_request.head.ref, 'hotfix/') && !startsWith(github.event.pull_request.head.ref, 'docs/') && !startsWith(github.event.pull_request.head.ref, 'refactor/') && !startsWith(github.event.pull_request.head.ref, 'experiment/') && !startsWith(github.event.pull_request.head.ref, 'chore/') && !startsWith(github.event.pull_request.head.ref, 'devops/')
-        run: echo "Nom de branche invalide"
+        run: |
+          if [[ $GITHUB_EVENT_NAME == 'pull_request' && \
+                ! $(echo "${{ github.event.pull_request.head.ref }}" | grep -E '^(feature/|fix/|release/|hotfix/|docs/|refactor/|experiment/|chore/|devops/)') ]]; then
+            echo "Nom de branche invalide"
+          fi
 
       - name: Verifier le Reviewer et l'Assignee
-        if: github.event.pull_request.requested_reviewers != null && github.event.pull_request.assignees != null && github.event.pull_request.labels != null
-        run: echo "Reviewer, Assignee et Labels selectionnes"
-      
+        run: |
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} != null && \
+                ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} != null && \
+                ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} != null ]]; then
+            echo "Reviewer, Assignee et Labels selectionnes"
+          fi
+
       - name: Reviewer, Assignee ou Labels non selectionnes
-        if: github.event.pull_request.requested_reviewers == null || github.event.pull_request.assignees == null || github.event.pull_request.labels == null
-        run: echo "Reviewer, Assignee ou Labels non selectionnes"
+        run: |
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} == null || \
+                ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} == null || \
+                ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} == null ]]; then
+            echo "Reviewer, Assignee ou Labels non selectionnes"
+          fi
 
       - name: Verifier la description
         if: github.event.pull_request.body != ''
