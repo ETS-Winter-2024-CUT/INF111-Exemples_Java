@@ -1,6 +1,9 @@
 name: Verification de Pull Request
 
 on:
+  push:
+    paths:
+      - '.github/workflows/*.yml'
   pull_request:
     types: [opened, edited, reopened]
 
