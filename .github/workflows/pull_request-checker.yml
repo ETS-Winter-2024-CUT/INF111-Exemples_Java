@@ -29,10 +29,10 @@ jobs:
             echo "Nom de branche invalide"
           fi
 
-      - name: Verifier le Reviewer
+      - name: Vérifier le Reviewer
         run: |
-          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} != null ]]; then
-            echo "Reviewer(s) selectionne(s)"
+          if [[ "${{ github.event.pull_request.requested_reviewers }}" != "null" ]] && [[ "${{ github.event.pull_request.requested_reviewers }}" != "[]" ]]; then
+            echo "Reviewer(s) sélectionné(s)"
           else
             echo "Reviewer(s) manquant(s)"
             exit 1
