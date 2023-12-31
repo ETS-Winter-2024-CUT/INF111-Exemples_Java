@@ -30,14 +30,30 @@ jobs:
             exit 1
           fi
 
-      - name: Verifier le Reviewer et l'Assignee
+      - name: Verifier le Reviewer
         run: |
-          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} != null && \
-                ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} != null && \
-                ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} != null ]]; then
-            echo "Reviewer, Assignee et Labels selectionnes"
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} != null ]]; then
+            echo "Reviewer(s) selectionne(s)"
           else
-            echo "Reviewer, Assignee ou Labels manquant"
+            echo "Reviewer(s) manquant(s)"
+            exit 1
+          fi
+
+      - name: Verifier l'Assignee
+        run: |
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} != null ]]; then
+            echo "Assignee(s) selectionne(s)"
+          else
+            echo "Assignee(s) manquant(s)"
+            exit 1
+          fi
+
+      - name: Verifier le(s) Label(s)
+        run: |
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} != null ]]; then
+            echo "Label(s) selectionne(s)"
+          else
+            echo "Label(s) manquant(s)"
             exit 1
           fi
 
