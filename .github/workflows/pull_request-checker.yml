@@ -25,13 +25,9 @@ jobs:
                 ${{ startsWith(github.event.pull_request.head.ref, 'chore/') }} || \
                 ${{ startsWith(github.event.pull_request.head.ref, 'devops/') }} ]]; then
             echo "Nom de branche valide"
-          fi
-
-      - name: Nom de branche invalide
-        run: |
-          if [[ $GITHUB_EVENT_NAME == 'pull_request' && \
-                ! $(echo "${{ github.event.pull_request.head.ref }}" | grep -E '^(feature/|fix/|release/|hotfix/|docs/|refactor/|experiment/|chore/|devops/)') ]]; then
+          else
             echo "Nom de branche invalide"
+            exit 1
           fi
 
       - name: Verifier le Reviewer et l'Assignee
@@ -40,20 +36,16 @@ jobs:
                 ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} != null && \
                 ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} != null ]]; then
             echo "Reviewer, Assignee et Labels selectionnes"
-          fi
-
-      - name: Reviewer, Assignee ou Labels non selectionnes
-        run: |
-          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} == null || \
-                ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} == null || \
-                ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} == null ]]; then
-            echo "Reviewer, Assignee ou Labels non selectionnes"
+          else
+            echo "Reviewer, Assignee ou Labels manquant"
+            exit 1
           fi
 
       - name: Verifier la description
-        if: github.event.pull_request.body != ''
-        run: echo "Description presente"
-      
-      - name: Description absente
-        if: github.event.pull_request.body == ''
-        run: echo "Description absente"
+        run: |
+          if [ -n "$GITHUB_EVENT_PULL_REQUEST_BODY" ]; then
+            echo "Description presente"
+          else
+            echo "Description absente"
+            exit 1
+          fi
