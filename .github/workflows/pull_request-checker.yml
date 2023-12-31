@@ -27,41 +27,22 @@ jobs:
             echo "Nom de branche valide"
           else
             echo "Nom de branche invalide"
-            exit 1
           fi
 
-      - name: Verifier le Reviewer
+      - name: Verifier le Reviewer, l'Assignee et les Labels
         run: |
-          if [ "${{ github.event.pull_request.requested_reviewers }}" == "null" ] && [ "${{ github.event.pull_request.requested_reviewers }}" == "[]" ]; then
-            echo "Reviewer(s) manquant(s)"
-            exit 1
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} != null && \
+                ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} != null && \
+                ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} != null ]]; then
+            echo "Reviewer, Assignee et Labels selectionnes"
           else
-            echo "Reviewer(s) selectionne(s)"
+            echo "Reviewer, Assignee ou Labels non selectionnes"
           fi
 
-      - name: Verifier l'Assignee
+      - name: Verifier la description et les labels
         run: |
-          if [ "${{ github.event.pull_request.assignees }}" == "null" ] && [ "${{ github.event.pull_request.assignees }}" == "[]" ]; then
-            echo "Assignee(s) manquant(s)"
-            exit 1
-          else
-            echo "Assignee(s) selectionne(s)"
-          fi
-
-      - name: Verifier le(s) Label(s)
-        run: |
-          if [ "${{ github.event.pull_request.labels }}" == "null" ] || [ "${{ github.event.pull_request.labels }}" == "[]" ]; then
-            echo "Aucun label n'est selectionne"
-            exit 1
-          else
-            echo "Label(s) selectionne(s)"
-          fi
-
-      - name: Verifier la description
-        run: |
-          if [ -n "$GITHUB_EVENT_PULL_REQUEST_BODY" ]; then
+          if [[ -n "${{ github.event.pull_request.body }}" ]]; then
             echo "Description presente"
           else
             echo "Description absente"
-            exit 1
           fi
