@@ -50,11 +50,11 @@ jobs:
 
       - name: Verifier le(s) Label(s)
         run: |
-          if [ "${{ github.event.pull_request.labels }}" != "null" ] && [ "${{ github.event.pull_request.labels }}" != "[]" ]; then
-            echo "Label(s) selectionne(s)"
-          else
-            echo "Label(s) manquant(s)"
+          if [ "${{ github.event.pull_request.labels }}" == "null" ] || [ "${{ github.event.pull_request.labels }}" == "[]" ]; then
+            echo "Aucun label n'est selectionne"
             exit 1
+          else
+            echo "Label(s) selectionne(s)"
           fi
 
       - name: Verifier la description
