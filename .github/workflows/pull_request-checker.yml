@@ -27,21 +27,36 @@ jobs:
             echo "Nom de branche valide"
           else
             echo "Nom de branche invalide"
-            exit 1
           fi
 
-      - name: Verifier le Reviewer, l'Assignee et les Labels
+      - name: Verifier le Reviewer
         run: |
-          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} != null && \
-                ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} != null && \
-                ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} != null ]]; then
-            echo "Reviewer, Assignee et Labels selectionnes"
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} != null ]]; then
+            echo "Reviewer(s) selectionne(s)"
           else
-            echo "Reviewer, Assignee ou Labels non selectionnes"
+            echo "Reviewer(s) manquant(s)"
             exit 1
           fi
 
-      - name: Verifier la description et les labels
+      - name: Verifier l'Assignee
+        run: |
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} != null ]]; then
+            echo "Assignee(s) selectionne(s)"
+          else
+            echo "Assignee(s) manquant(s)"
+            exit 1
+          fi
+
+      - name: Verifier les Labels
+        run: |
+          if [[ ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} != null ]]; then
+            echo "Label(s) selectionne(s)"
+          else
+            echo "Label(s) manquant(s)"
+            exit 1
+          fi
+
+      - name: Verifier la description
         run: |
           if [[ -n "${{ github.event.pull_request.body }}" ]]; then
             echo "Description presente"
