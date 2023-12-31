@@ -27,6 +27,7 @@ jobs:
             echo "Nom de branche valide"
           else
             echo "Nom de branche invalide"
+            exit 1
           fi
 
       - name: Verifier le Reviewer, l'Assignee et les Labels
@@ -37,6 +38,7 @@ jobs:
             echo "Reviewer, Assignee et Labels selectionnes"
           else
             echo "Reviewer, Assignee ou Labels non selectionnes"
+            exit 1
           fi
 
       - name: Verifier la description et les labels
@@ -45,4 +47,5 @@ jobs:
             echo "Description presente"
           else
             echo "Description absente"
+            exit 1
           fi
