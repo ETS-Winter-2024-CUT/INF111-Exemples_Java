@@ -1,0 +1,34 @@
+name: Verification de Pull Request
+
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+
+jobs:
+  check-pull_request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Verifier le nom de la branche
+        if: github.event_name != 'pull_request' || startsWith(github.event.pull_request.head.ref, 'feature/') || startsWith(github.event.pull_request.head.ref, 'fix/') || startsWith(github.event.pull_request.head.ref, 'release/') || startsWith(github.event.pull_request.head.ref, 'hotfix/') || startsWith(github.event.pull_request.head.ref, 'docs/') || startsWith(github.event.pull_request.head.ref, 'refactor/') || startsWith(github.event.pull_request.head.ref, 'experiment/') || startsWith(github.event.pull_request.head.ref, 'chore/') || startsWith(github.event.pull_request.head.ref, 'devops/')
+        run: echo "Nom de branche valide"
+      
+      - name: Nom de branche invalide
+        if: github.event_name == 'pull_request' && !startsWith(github.event.pull_request.head.ref, 'feature/') && !startsWith(github.event.pull_request.head.ref, 'fix/') && !startsWith(github.event.pull_request.head.ref, 'release/') && !startsWith(github.event.pull_request.head.ref, 'hotfix/') && !startsWith(github.event.pull_request.head.ref, 'docs/') && !startsWith(github.event.pull_request.head.ref, 'refactor/') && !startsWith(github.event.pull_request.head.ref, 'experiment/') && !startsWith(github.event.pull_request.head.ref, 'chore/') && !startsWith(github.event.pull_request.head.ref, 'devops/')
+        run: echo "Nom de branche invalide"
+
+      - name: Verifier le Reviewer et l'Assignee
+        if: github.event.pull_request.requested_reviewers != null && github.event.pull_request.assignees != null && github.event.pull_request.labels != null
+        run: echo "Reviewer, Assignee et Labels selectionnes"
+      
+      - name: Reviewer, Assignee ou Labels non selectionnes
+        if: github.event.pull_request.requested_reviewers == null || github.event.pull_request.assignees == null || github.event.pull_request.labels == null
+        run: echo "Reviewer, Assignee ou Labels non selectionnes"
+
+      - name: Verifier la description
+        if: github.event.pull_request.body != ''
+        run: echo "Description presente"
+      
+      - name: Description absente
+        if: github.event.pull_request.body == ''
+        run: echo "Description absente"
