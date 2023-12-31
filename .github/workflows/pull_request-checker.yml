@@ -32,7 +32,7 @@ jobs:
 
       - name: Verifier le Reviewer
         run: |
-          if [[ ${GITHUB_EVENT_PULL_REQUEST_REQUESTED_REVIEWERS:-null} != null ]]; then
+          if [ "${{ github.event.pull_request.requested_reviewers }}" != "null" ] && [ "${{ github.event.pull_request.requested_reviewers }}" != "[]" ]; then
             echo "Reviewer(s) selectionne(s)"
           else
             echo "Reviewer(s) manquant(s)"
@@ -41,7 +41,7 @@ jobs:
 
       - name: Verifier l'Assignee
         run: |
-          if [[ ${GITHUB_EVENT_PULL_REQUEST_ASSIGNEES:-null} != null ]]; then
+          if [ "${{ github.event.pull_request.assignees }}" != "null" && [ "${{ github.event.pull_request.assignees }}" != "[]" ]; then
             echo "Assignee(s) selectionne(s)"
           else
             echo "Assignee(s) manquant(s)"
@@ -50,7 +50,7 @@ jobs:
 
       - name: Verifier le(s) Label(s)
         run: |
-          if [[ ${GITHUB_EVENT_PULL_REQUEST_LABELS:-null} != null ]]; then
+          if [ ${{ github.event.pull_request.labels }} != "null" && [ "${{ github.event.pull_request.labels }}" != "[]" ]; then
             echo "Label(s) selectionne(s)"
           else
             echo "Label(s) manquant(s)"
