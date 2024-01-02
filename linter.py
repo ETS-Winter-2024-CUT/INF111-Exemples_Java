@@ -16,11 +16,11 @@ EXIT_STATUS_FAILURE = 1
 DEFAULT_RULER = 100
 
 
-def print_error(line_num, message) -> None:
-    print(f"\tLigne {line_num + 1:>3}: {message}")
+def print_error(filename: str, line_num: int, message: str) -> None:
+    print(f"<{filename}> \tLigne {line_num + 1:>3}: {message}")
 
 
-def verify_javadoc(lines: list[str]):
+def verify_javadoc(filename: str, lines: list[str]):
     EXIT_STATUS_SUCCESS = 0
     EXIT_STATUS_FAILURE = 1
 
@@ -46,11 +46,11 @@ def verify_javadoc(lines: list[str]):
     if header_comment:
         return EXIT_STATUS_SUCCESS
 
-    print_error(i, f"Il manque un Javadoc dans ce fichier.")
+    print_error(filename, i, f"Il manque un Javadoc dans ce fichier.")
     return EXIT_STATUS_FAILURE
 
 
-def verify_ruler(lines: list[str], ruler: int) -> bool:
+def verify_ruler(filename: str, lines: list[str], ruler: int) -> bool:
     success_status = EXIT_STATUS_SUCCESS
 
     for index, line in enumerate(lines):
@@ -58,7 +58,7 @@ def verify_ruler(lines: list[str], ruler: int) -> bool:
 
         if line_lenght > ruler:
             success_status = EXIT_STATUS_FAILURE
-            print_error(index, f"Ligne trop longue ({line_lenght} > {ruler}).")
+            print_error(filename, index, f"Ligne trop longue ({line_lenght} > {ruler}).")
 
     return success_status
 
@@ -75,12 +75,10 @@ def main(files: list[list]) -> bool:
         with open(filename, "r") as f:
             lines = f.readlines()
 
-            if verify_javadoc(lines) == EXIT_STATUS_FAILURE:
-                print(f"Il y'a des erreurs dans le fichier {filename}")
+            if verify_javadoc(filename, lines) == EXIT_STATUS_FAILURE:
                 exit_status = EXIT_STATUS_FAILURE
 
-            if verify_ruler(lines, DEFAULT_RULER) == EXIT_STATUS_FAILURE:
-                print(f"Il y'a des erreurs dans le fichier {filename}")
+            if verify_ruler(filename, lines, DEFAULT_RULER) == EXIT_STATUS_FAILURE:
                 exit_status = EXIT_STATUS_FAILURE
 
     return exit_status
