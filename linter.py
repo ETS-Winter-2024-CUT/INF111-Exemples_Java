@@ -81,7 +81,11 @@ def verify_operators_spacing(lines: list[str]) -> bool:
         operators_in_line = [op for op in operators if op in line]
         if (
             len(operators_in_line) > 0
-            and not any(chars in line for chars in ["/*", "/**", "*/", "//"])
+            and not any(
+                chars in line for chars in [
+                    "/*", "/**", "*/", "//", "%.", "%s", "%d", "%f", "%x", "%X", "%b", "%c", "t",
+                ]
+            )
             and not all(f" {opil} " in line for opil in operators_in_line)
         ):
             print_error(index, f"Mauvaise aeration des operateurs.")
