@@ -19,7 +19,7 @@ renforcer leurs compétences en programmation Java.
 ## Utilisation
 1. Cloner ce dépôt localement sur votre machine :
    ```
-   git clone https://github.com/votre-utilisateur/nom-du-depot.git
+   git clone https://github.com/ETS-Winter-2024-CUT/INF111-Exemples_Java.git
    ```
 2. Utiliser un IDE tel que Visual Studio Code, Eclipse, IntelliJ ou tout autre éditeur de code Java.
 3. Les exemples de code se trouvent dans le répertoire "src".
