@@ -74,7 +74,7 @@ def verify_operators_spacing(lines: list[str]) -> bool:
         # Opérateurs de comparaison
         "==", "!=", "!=", ">", "<", ">=", "<=",
         # Opérateurs binaires
-        "&&", "||",
+        "&&", "||"
     )
 
     for index, line in enumerate(lines):
