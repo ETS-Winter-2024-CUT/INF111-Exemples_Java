@@ -20,19 +20,6 @@ def print_error(line_num, message) -> None:
     print(f"\tLigne {line_num + 1:>3}: {message}")
 
 
-def verify_ruler(lines: list[str], ruler: int) -> bool:
-    success_status = EXIT_STATUS_SUCCESS
-
-    for index, line in enumerate(lines):
-        line_lenght = len(line.strip())
-
-        if line_lenght > ruler:
-            success_status = EXIT_STATUS_FAILURE
-            print_error(index, f"Ligne trop longue ({line_lenght} > {ruler}).")
-
-    return success_status
-
-
 def verify_javadoc(lines: list[str]):
     # Trouver l'index où les importations se terminent
     import_end_index = len(lines)
@@ -56,6 +43,38 @@ def verify_javadoc(lines: list[str]):
     return EXIT_STATUS_FAILURE
 
 
+def verify_ruler(lines: list[str], ruler: int) -> bool:
+    success_status = EXIT_STATUS_SUCCESS
+
+    for index, line in enumerate(lines):
+        line_lenght = len(line.strip())
+
+        if line_lenght > ruler:
+            success_status = EXIT_STATUS_FAILURE
+            print_error(index, f"Ligne trop longue ({line_lenght} > {ruler}).")
+
+    return success_status
+
+
+def verify_operators_spacing(lines: list[str]) -> bool:
+    success_status = EXIT_STATUS_SUCCESS
+
+    operators = (
+        "+", "-", "*", "/", "%", "++", "--",
+        "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", ">>=", "<<=",
+        "==", "!=", "!=", ">", "<", ">=", "<=",
+        "&&", "||"
+    )
+
+    for index, line in enumerate(lines):
+        operators_in_line = [op for op in operators if op in line]
+        if len(operators_in_line) > 0 and not all(f' {opil} ' in line for opil in operators_in_line):
+            print_error(index, f"Mauvaise aeration des operateurs.")
+            success_status = EXIT_STATUS_FAILURE
+
+    return success_status
+
+
 def main(files: list[list]) -> bool:
     exit_status = EXIT_STATUS_SUCCESS
 
@@ -70,6 +89,9 @@ def main(files: list[list]) -> bool:
             lines = f.readlines()
 
             if verify_javadoc(lines) == EXIT_STATUS_FAILURE:
+                exit_status = EXIT_STATUS_FAILURE
+
+            if verify_operators_spacing(lines) == EXIT_STATUS_FAILURE:
                 exit_status = EXIT_STATUS_FAILURE
 
             if verify_ruler(lines, DEFAULT_RULER) == EXIT_STATUS_FAILURE:
