@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Cette classe permet à l'utilisateur de manipuler une liste d'entiers en effectuant diverses 
- *  opérations telles que l'ajout, l'affichage, le calcul de la somme, la recherche du plus grand 
+ * Cette classe permet à l'utilisateur de manipuler une liste d'entiers en effectuant diverses
+ *  opérations telles que l'ajout, l'affichage, le calcul de la somme, la recherche du plus grand
  *  élément et la suppression d'un élément spécifique de la liste.
  */
 
@@ -35,8 +35,8 @@ public class ManipulationListeEntiers {
         int somme = 0;
 
         /*
-         * l'opérateur `:` est utilisé dans une structure de boucle for améliorée (ou for-each) 
-         * pour itérer à travers les éléments d'une collection telle qu'une liste, un tableau ou 
+         * l'opérateur `:` est utilisé dans une structure de boucle for améliorée (ou for-each)
+         * pour itérer à travers les éléments d'une collection telle qu'une liste, un tableau ou
          * toute autre structure de données itérable.
          */
         for (int element : liste_entiers)
