@@ -21,6 +21,9 @@ def print_error(line_num, message) -> None:
 
 
 def verify_javadoc(lines: list[str]):
+    EXIT_STATUS_SUCCESS = 0
+    EXIT_STATUS_FAILURE = 1
+
     # Trouver l'index où les importations se terminent
     import_end_index = len(lines)
 
@@ -30,16 +33,20 @@ def verify_javadoc(lines: list[str]):
             break
 
     # Combiner les lignes après les importations pour rechercher du Javadoc
-    rest_of_code = "".join(lines[import_end_index:])
+    rest_of_code = "\n".join(
+        lines[import_end_index:]
+    )  # Ajout de "\n" pour garder les sauts de ligne
 
     # Définir le motif regex qui correspond au Javadoc
-    pattern = r"/\/\*\*(?:.|\r?\n)*?\*\//"
+    pattern = (
+        r"/\*\*(?:.|\n)*?\*/"  # Correction du motif regex pour correspondre au Javadoc
+    )
     header_comment = re.search(pattern, rest_of_code, re.DOTALL)
 
     if header_comment:
         return EXIT_STATUS_SUCCESS
 
-    print_error(i, f"Il manque un Javadoc a ce fichier.")
+    print_error(i, f"Il manque un Javadoc dans ce fichier.")
     return EXIT_STATUS_FAILURE
 
 
@@ -60,15 +67,40 @@ def verify_operators_spacing(lines: list[str]) -> bool:
     success_status = EXIT_STATUS_SUCCESS
 
     operators = (
-        "+", "-", "*", "/", "%", "++", "--",
-        "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", ">>=", "<<=",
-        "==", "!=", "!=", ">", "<", ">=", "<=",
-        "&&", "||"
+        "+",
+        "-",
+        "*",
+        "/",
+        "%",
+        "++",
+        "--",
+        "=",
+        "+=",
+        "-=",
+        "*=",
+        "/=",
+        "%=",
+        "&=",
+        "|=",
+        "^=",
+        ">>=",
+        "<<=",
+        "==",
+        "!=",
+        "!=",
+        ">",
+        "<",
+        ">=",
+        "<=",
+        "&&",
+        "||",
     )
 
     for index, line in enumerate(lines):
         operators_in_line = [op for op in operators if op in line]
-        if len(operators_in_line) > 0 and not all(f' {opil} ' in line for opil in operators_in_line):
+        if len(operators_in_line) > 0 and not all(
+            f" {opil} " in line for opil in operators_in_line
+        ):
             print_error(index, f"Mauvaise aeration des operateurs.")
             success_status = EXIT_STATUS_FAILURE
 
