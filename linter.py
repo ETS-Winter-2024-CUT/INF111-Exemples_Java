@@ -72,17 +72,16 @@ def main(files: list[list]) -> bool:
             raise FileNotFoundError
 
         # Ouverture et traitement du fichier
-        print(f'Ouverture de "{filename}":')
         with open(filename, "r") as f:
             lines = f.readlines()
 
             if verify_javadoc(lines) == EXIT_STATUS_FAILURE:
+                print(f"Il y'a des erreurs dans le fichier {filename}")
                 exit_status = EXIT_STATUS_FAILURE
 
             if verify_ruler(lines, DEFAULT_RULER) == EXIT_STATUS_FAILURE:
+                print(f"Il y'a des erreurs dans le fichier {filename}")
                 exit_status = EXIT_STATUS_FAILURE
-
-        print(f'Fermeture de "{filename}".\n')
 
     return exit_status
 
