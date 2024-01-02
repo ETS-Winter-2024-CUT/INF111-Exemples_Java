@@ -1,7 +1,7 @@
 import java.util.Scanner; // Importe la classe Scanner du package `java.util`
 
 /**
- * Ce programme calcule le salaire en fonction du nombre d'heures travaillées et du 
+ * Ce programme calcule le salaire en fonction du nombre d'heures travaillées et du
  *  taux horaire.
  * Il demande à l'utilisateur d'entrer le nombre d'heures de travail et le taux
  *  horaire, puis calcule et affiche le salaire.
