@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-/*
- * Ce code Java permet à l'utilisateur de spécifier un nombre de valeurs, puis saisit ces valeurs et
- *  trouve la plus grande parmi elles. 
+/**
+ * Ce code Java permet à l'utilisateur de spécifier un nombre de valeurs, puis saisit ces valeurs 
+ *  et trouve la plus grande parmi elles. 
  * Il utilise les méthodes `saisir_entier_positif` pour obtenir un nombre valide de valeurs à 
  *  comparer et `trouver_max` pour déterminer la plus grande valeur parmi celles saisies. 
  * Ensuite, il affiche la plus grande valeur.
