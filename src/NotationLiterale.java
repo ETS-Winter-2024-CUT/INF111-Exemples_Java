@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 /**
- * Ce programme prend une note numérique (entre 0 et 100) en entrée et affiche la notation littérale
- * correspondante en fonction d'une échelle de notation prédéfinie.
+ * Ce programme prend une note numérique (entre 0 et 100) en entrée et affiche la notation 
+ *  littérale correspondante en fonction d'une échelle de notation prédéfinie.
  */
 
 public class NotationLiterale {
