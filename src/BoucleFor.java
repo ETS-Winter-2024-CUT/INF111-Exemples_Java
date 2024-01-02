@@ -1,4 +1,4 @@
-/*
+/**
  * Ce programme illustre l'utilisation des boucles for pour filtrer et afficher des nombres en 
  *  fonction de différentes conditions dans des plages définies.
  */
