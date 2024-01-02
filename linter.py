@@ -63,37 +63,6 @@ def verify_ruler(lines: list[str], ruler: int) -> bool:
     return success_status
 
 
-def verify_operators_spacing(lines: list[str]) -> bool:
-    success_status = EXIT_STATUS_SUCCESS
-
-    operators = (
-        # Opérateurs arithmétiques
-        "+", "-", "*", "/", "%",
-        # Opérateurs d'affectation
-        "++", "--", "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", ">>=", "<<=",
-        # Opérateurs de comparaison
-        "==", "!=", "!=", ">", "<", ">=", "<=",
-        # Opérateurs binaires
-        "&&", "||"
-    )
-
-    for index, line in enumerate(lines):
-        operators_in_line = [op for op in operators if op in line]
-        if (
-            len(operators_in_line) > 0
-            and not any(
-                chars in line for chars in [
-                    "/*", "/**", "*/", "//", "%.", "%s", "%d", "%f", "%x", "%X", "%b", "%c", "t",
-                ]
-            )
-            and not all(f" {opil} " in line for opil in operators_in_line)
-        ):
-            print_error(index, f"Mauvaise aeration des operateurs.")
-            success_status = EXIT_STATUS_FAILURE
-
-    return success_status
-
-
 def main(files: list[list]) -> bool:
     exit_status = EXIT_STATUS_SUCCESS
 
@@ -108,9 +77,6 @@ def main(files: list[list]) -> bool:
             lines = f.readlines()
 
             if verify_javadoc(lines) == EXIT_STATUS_FAILURE:
-                exit_status = EXIT_STATUS_FAILURE
-
-            if verify_operators_spacing(lines) == EXIT_STATUS_FAILURE:
                 exit_status = EXIT_STATUS_FAILURE
 
             if verify_ruler(lines, DEFAULT_RULER) == EXIT_STATUS_FAILURE:
