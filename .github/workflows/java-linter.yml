@@ -15,5 +15,5 @@ jobs:
         uses: actions/checkout@main
 
       - name: Execution du script Python de validation du code Java
-        run: python linter.py "*.java"
+        run: python linter.py "src/*.java"
         id: validation
