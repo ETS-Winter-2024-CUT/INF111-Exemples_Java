@@ -1,0 +1,27 @@
+name: Verification de la Pull Request
+
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Get branch name
+        run: echo "::set-output name=branch_name::$(echo $GITHUB_HEAD_REF)"
+
+      - name: Check branch name
+        run: |
+          BRANCH_NAME=$(echo ${{ steps.get-branch-name.outputs.branch_name }})
+          if [[ $BRANCH_NAME =~ ^(fix/|release/|hotfix/|docs/|refactor/|experiment/|chore/|devops/) ]]; then
+            echo "Branch name is valid"
+            exit 0
+          else
+            echo "Branch name is invalid. It must start with fix/, release/, hotfix/, docs/, refactor/, experiment/, chore/, or devops/"
+            exit 1
+          fi
