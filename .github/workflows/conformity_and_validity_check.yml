@@ -1,0 +1,35 @@
+name: Vérification de la conformité et de la validité du code
+
+on:
+  # Déclencher le workflow sur les PRs lorsqu'un fichier Java est modifié.
+  pull_request:
+    paths:
+      - '**.java'
+
+jobs:
+  check-conventions:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 17
+
+    - name: Checkstyle
+      run: |
+        wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.44/checkstyle-8.44-all.jar
+        java -jar checkstyle-8.44-all.jar -c sun_checks.xml src/*.java
+
+    - name: Compile code
+      run: javac src/*.java
+
+    - name: SpotBugs Analysis
+      run: |
+        wget https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs/4.6.6/spotbugs-4.6.6.tgz
+        tar -xzf spotbugs-4.6.6.tgz
+        java -jar spotbugs-4.6.6/lib/spotbugs.jar -textui -html -output spotbugs-report.html src/*.class
+        cat spotbugs-report.html  # Afficher le rapport SpotBugs dans le terminal
