@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * Programme permettant de calculer la somme de plusieurs entiers saisis au clavier, 
+ * Programme permettant de calculer la somme de plusieurs entiers saisis au clavier,
  *  compris dans l'intervalle 1 à 10.
  */
 
