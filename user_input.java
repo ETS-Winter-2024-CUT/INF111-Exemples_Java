@@ -6,7 +6,7 @@ public class user_input {
         Scanner scanner1 = new Scanner(System.in); 
         /* On initialise un Scanner nommer "scanner1" */
 
-        System.out.println("What is your name? ");
+        System.out.println("What is your name?");
         String name = scanner1.nextLine();
         /* On lui indique de scanner la prochaine ligne (entrer dans le terminal) */
         
