@@ -28,7 +28,7 @@ public class user_input {
         String food = scanner1.nextLine();
         /* On lui indique de scanner la prochaine ligne (entrer dans le terminal) */
 
-        System.out.println("Hello "+name);
+        System.out.println("Hello " + name);
         System.out.println("You are "+age+" years old");
         System.out.println("Your favorite food is "+food);
     }
