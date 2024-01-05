@@ -8,7 +8,7 @@ public class GUI_intro {
         int age = Integer.parseInt(JOptionPane.showInputDialog("Enter your age"));
         /* Lorsqu'on utiliser showImputDialog, ça retourne un string, ici on veux un int, en utilisant Integer.Parse,
            nous allons convertir la variable de retour string, dirrectement en int */
-        JOptionPane.showMessageDialog(null, "Your are "+age+" years old");
+        JOptionPane.showMessageDialog(null, "Your are " + age + " years old");
 
         double height = Double.parseDouble(JOptionPane.showInputDialog("Enter your height in m"));
         JOptionPane.showMessageDialog(null, "Your are "+height+" meters tall");
