@@ -10,7 +10,7 @@ public class user_input {
         String name = scanner1.nextLine();
         /* On lui indique de scanner la prochaine ligne (entrer dans le terminal) */
         
-        System.out.println("How old are you ");
+        System.out.println("How old are you?");
         int age = scanner1.nextInt();
         /* On lui indique de scanner le prochain int (entrer dans le terminal) */
 
