@@ -24,7 +24,7 @@ public class user_input {
          *                      on doit "eliminer" le \n, ce qui peut etre fait avec la ligne scanner1.nextLine())
          */
 
-        System.out.println("What is your favorite food? ");
+        System.out.println("What is your favorite food?");
         String food = scanner1.nextLine();
         /* On lui indique de scanner la prochaine ligne (entrer dans le terminal) */
 
