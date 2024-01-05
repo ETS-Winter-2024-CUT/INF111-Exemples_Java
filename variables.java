@@ -8,7 +8,7 @@ public class variables {
             char symbol = '@';
             String name = "Hugh";
 
-            System.out.println("Hello "+name); 
+            System.out.println("Hello " + name); 
             System.out.println(symbol);
             /*
              * Une difference entre "c" et "java":
