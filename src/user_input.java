@@ -15,6 +15,8 @@ public class user_input {
         /* On lui indique de scanner le prochain int (entrer dans le terminal) */
 
         scanner1.nextLine();
+                
+        scanner1.close()
         /* En utilisant le scanner "next line" nous allons chercher dans l'ordre
          * Variable     Scanner
          * Name         Jhon\n (Le \n represente la touche enter)
