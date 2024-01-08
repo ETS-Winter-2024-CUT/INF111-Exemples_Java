@@ -2,7 +2,7 @@
  * La classe variables illustre la déclaration et l'initialisation de différentes variables en Java,
  * et fait une comparaison avec des concepts de programmation en C.
  */
-public class variables {
+public class Variables {
 
     /**
      * La méthode principale de la classe variables.

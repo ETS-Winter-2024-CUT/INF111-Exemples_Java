@@ -4,7 +4,7 @@ import java.util.Random;
  * La classe random_numbers illustre l'utilisation de la classe Random pour générer
  * des nombres aléatoires de différents types en Java.
  */
-public class random_numbers {
+public class RandomNumbers {
 
     /**
      * La méthode principale de la classe random_numbers.
