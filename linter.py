@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
     for pattern in file_patterns:
         # Utilisation de glob pour trouver les fichiers correspondants au motif
-        matching_files = glob.glob(pattern)
+        matching_files = glob.glob(pattern, recursive=True)
         files.extend(matching_files)
 
     if not files:
