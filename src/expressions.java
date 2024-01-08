@@ -1,6 +1,6 @@
 /**
  * La classe expressions illustre les concepts d'expressions, d'opérandes et d'opérateurs en Java.
- * Elle démontre également l'utilisation des opérateurs arithmétiques et des opérateurs 
+ * Elle démontre également l'utilisation des opérateurs arithmétiques et des opérateurs
  * d'assignation augmentée.
  */
 public class Expressions {

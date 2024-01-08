@@ -19,17 +19,17 @@ public class variables {
         String name = "Hugh";
 
         // Affichage des valeurs des variables
-        System.out.println("Hello " + name); 
+        System.out.println("Hello " + name);
         System.out.println(symbol);
         /*
          * Une différence entre "C" et "Java":
          * En C, simplement printf();
          * En Java, System.out.printf();
-         * 
+         *
          * Ici, le System.out.println(); (print line) est utilisé pour afficher une ligne
-         * suivie d'un saut de ligne. Il permet aussi le formatage " + variable", ou 
-         * println(variable) qui peut simplifier l'écriture, bien que l'écriture habituelle du C 
+         * suivie d'un saut de ligne. Il permet aussi le formatage " + variable", ou
+         * println(variable) qui peut simplifier l'écriture, bien que l'écriture habituelle du C
          * soit tout aussi valable.
-         */ 
-    } 
+         */
+    }
 }
