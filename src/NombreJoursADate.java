@@ -72,7 +72,7 @@ public class NombreJoursADate {
      * @param annee Année à vérifier pour la bissextile
      * @return      True si l'année est bissextile, sinon False
      */
-    private static boolean annee_est_bisextile(int annee) {
+    private boolean anneeEstBissextile(int annee) {
         // Vérification des conditions pour qu'une année soit bissextile
         return (annee % 4 == 0 && annee % 100 != 0) || (annee % 400 == 0);
     }
