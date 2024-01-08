@@ -43,7 +43,7 @@ public class NombreJoursADate {
      * @param mois  Mois pour lequel le nombre de jours est calculé
      * @return      Le nombre de jours dans le mois pour l'année donnée
      */
-    private static int nbr_jours_mois(int annee, int mois) {
+    private int nbrJoursMois(int annee, int mois) {
         switch (mois) {
             case 1:
             case 3:
