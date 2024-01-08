@@ -1,36 +1,42 @@
-    public class expressions {
-        public static void main(String[] args) {
-            /*
-             * expression = operands & operators
-             * operands = values, variables, numbers, quantity
-             * operators = + - * / %
-             */
+/**
+ * La classe expressions illustre les concepts d'expressions, d'opérandes et d'opérateurs en Java.
+ * Elle démontre également l'utilisation des opérateurs arithmétiques et des opérateurs 
+ * d'assignation augmentée.
+ */
+public class Expressions {
 
-            int num = 10;
+    /**
+     * La méthode principale de la classe expressions.
+     * @param args Les arguments de la ligne de commande (non utilisés dans cet exemple).
+     */
+    public static void main(String[] args) {
+        /*
+         * expression = operands & operators
+         * operands = values, variables, numbers, quantity
+         * operators = + - * / %
+         */
 
-            num = num / 2; // est la meme chose que: num /= 2
+        int num = 10;
 
-            System.out.println(num);
-        }
+        // Division par 2 et assignation du résultat à la variable num
+        num = num / 2; // est la meme chose que: num /= 2
+
+        System.out.println(num);
     }
 
-    /*
-     * arithmetic operators
+    /**
+     * Les opérateurs arithmétiques disponibles en Java.
      * + (addition)
-     * - (substraction)
-     * (multiplication)
+     * - (soustraction)
+     * * (multiplication)
      * / (division)
-     * % (modulus)
-     * ++ (increment)
-     * -- (decrement)
+     * % (modulo)
+     * ++ (incrément)
+     * -- (décrément)
      */
 
-    /*
-     * Comme en C, on peut facilité le tout avec:
-     * augmented assignement operators = used to replace a statement where an
-     * operator
-     * takes a variable as one of its arguments
-     * and then assigns the result back to the same variable
-     * x = x + 1
-     * x += 1
+    /**
+     * Les opérateurs d'assignation augmentée facilitent l'utilisation des opérations récurrentes.
+     * x = x + 1 peut être remplacé par x += 1.
      */
+}

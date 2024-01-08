@@ -1,4 +1,11 @@
-import java.util.Scanner; /* Afin d'utiliser les scanners, on doit ajouter de la librairie, la classe Scanner se trouver dans le pack Utility */
+/* Afin d'utiliser les scanners, on doit ajouter de la librairie, la classe Scanner se trouver dans le pack Utility */
+import java.util.Scanner; 
+
+/**
+ * Cette classe permet de collecter les informations de l'utilisateur telles que le nom, l'âge et 
+ *  la nourriture préférée.
+ * Les informations sont saisies à l'aide de la classe Scanner.
+ */
 
 public class user_input {
     public static void main(String[] args){
@@ -15,7 +22,7 @@ public class user_input {
         /* On lui indique de scanner le prochain int (entrer dans le terminal) */
 
         scanner1.nextLine();
-        /* En utilisant le scanner "next line" nous allons chercher dans l'ordre
+        /** En utilisant le scanner "next line" nous allons chercher dans l'ordre
          * Variable     Scanner
          * Name         Jhon\n (Le \n represente la touche enter)
          * Age          20
