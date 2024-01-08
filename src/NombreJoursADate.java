@@ -30,7 +30,7 @@ public class NombreJoursADate {
         } else {
             // Affichage du nombre de jours dans le mois et l'année donnés
             System.out.printf("Il y a %d jours dans le mois %d de l'année %d!",
-                    nbr_jours_mois(annee, mois), mois, annee);
+                    nbrJoursMois(annee, mois), mois, annee);
         }
 
         scanner.close(); // Fermeture du scanner pour libérer les ressources
@@ -41,9 +41,9 @@ public class NombreJoursADate {
      *
      * @param annee Année pour laquelle le nombre de jours est calculé
      * @param mois  Mois pour lequel le nombre de jours est calculé
-     * @return      Le nombre de jours dans le mois pour l'année donnée
+     * @return Le nombre de jours dans le mois pour l'année donnée
      */
-    private int nbrJoursMois(int annee, int mois) {
+    private static int nbrJoursMois(int annee, int mois) {
         switch (mois) {
             case 1:
             case 3:
@@ -60,7 +60,7 @@ public class NombreJoursADate {
                 return 30; // Mois ayant 30 jours
             case 2:
                 // Février avec ajustement pour les années bissextiles
-                return 28 + (annee_est_bisextile(annee) ? 1 : 0);
+                return 28 + (anneeEstBissextile(annee) ? 1 : 0);
             default:
                 return 0; // Pour toute autre entrée de mois invalide
         }
@@ -70,9 +70,9 @@ public class NombreJoursADate {
      * Méthode pour vérifier si une année est bissextile ou non.
      *
      * @param annee Année à vérifier pour la bissextile
-     * @return      True si l'année est bissextile, sinon False
+     * @return True si l'année est bissextile, sinon False
      */
-    private boolean anneeEstBissextile(int annee) {
+    private static boolean anneeEstBissextile(int annee) {
         // Vérification des conditions pour qu'une année soit bissextile
         return (annee % 4 == 0 && annee % 100 != 0) || (annee % 400 == 0);
     }
