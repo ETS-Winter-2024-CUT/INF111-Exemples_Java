@@ -4,7 +4,7 @@ import java.util.Scanner;
  * La classe math_class illustre l'utilisation de la classe Math et de la classe Scanner pour
  * calculer l'hypoténuse d'un triangle en utilisant le théorème de Pythagore.
  */
-public class math_class {
+public class Math_class {
 
     /**
      * La méthode principale de la classe math_class.

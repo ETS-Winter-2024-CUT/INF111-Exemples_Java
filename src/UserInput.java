@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Les informations sont saisies à l'aide de la classe Scanner.
  */
 
-public class user_input {
+public class UserInput {
     public static void main(String[] args){
 
         Scanner scanner1 = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class user_input {
 
         scanner1.nextLine();
 
-        scanner1.close()
+        scanner1.close();
         /* En utilisant le scanner "next line" nous allons chercher dans l'ordre
          * Variable     Scanner
          * Name         Jhon\n (Le \n represente la touche enter)

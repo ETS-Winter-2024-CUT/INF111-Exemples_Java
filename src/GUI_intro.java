@@ -23,8 +23,7 @@ public class GUI_intro {
         JOptionPane.showMessageDialog(null, "Your are " + age + " years old");
 
         // Saisie de la taille en mètres en utilisant showInputDialog et conversion en double
-        double height = Double.parseDouble(JOptionPane.showInputDialog("Enter your height in
-                                                                        meters"));
+        double height = Double.parseDouble(JOptionPane.showInputDialog("Enter your height in meters"));
         JOptionPane.showMessageDialog(null, "Your are " + height + " meters tall");
     }
 }
