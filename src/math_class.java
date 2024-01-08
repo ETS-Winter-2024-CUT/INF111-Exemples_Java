@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
 /**
- * La classe math_class illustre l'utilisation de la classe Math et de la classe Scanner pour calculer
- * l'hypoténuse d'un triangle en utilisant le théorème de Pythagore.
+ * La classe math_class illustre l'utilisation de la classe Math et de la classe Scanner pour
+ * calculer l'hypoténuse d'un triangle en utilisant le théorème de Pythagore.
  */
 public class math_class {
 
     /**
      * La méthode principale de la classe math_class.
-     * Elle permet à l'utilisateur d'entrer les côtés d'un triangle, puis calcule et affiche l'hypoténuse.
+     * Elle permet à l'utilisateur d'entrer les côtés d'un triangle, puis calcule et affiche
+     * l'hypoténuse.
      * @param args Les arguments de la ligne de commande (non utilisés dans cet exemple).
      */
     public static void main(String[] args) {
@@ -47,7 +48,8 @@ public class math_class {
      * - double Math.exp(double a) : Renvoie la valeur exponentielle de l'argument spécifié.
      *
      * Méthodes de puissance :
-     * - double Math.pow(double base, double exponent) : Renvoie la valeur de la base élevée à la puissance de l'exposant.
+     * - double Math.pow(double base, double exponent) : Renvoie la valeur de la base élevée à la
+     *   puissance de l'exposant.
      *
      * Méthodes de manipulation de nombres :
      * - double Math.abs(double a) : Renvoie la valeur absolue d'un nombre.
