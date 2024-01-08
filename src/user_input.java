@@ -1,4 +1,5 @@
-/* Afin d'utiliser les scanners, on doit ajouter de la librairie, la classe Scanner se trouver dans le pack Utility */
+/* Afin d'utiliser les scanners, on doit ajouter de la librairie, la classe Scanner se trouver dans 
+le pack Utility */
 import java.util.Scanner; 
 
 /**
@@ -28,9 +29,11 @@ public class user_input {
          * Variable     Scanner
          * Name         Jhon\n (Le \n represente la touche enter)
          * Age          20
-         * Food         \n     (Car lorsque on clic "enter" suite a notre age, le scanner ne garde que le chiffre et laisse donc la
-         *                      caractere \n comme etant le prochain objet a scanner, donc si nous voulons lire un autre ligne de caractere
-         *                      on doit "eliminer" le \n, ce qui peut etre fait avec la ligne scanner1.nextLine())
+         * Food         \n     (Car lorsque on clic "enter" suite a notre age, le scanner ne garde 
+         *                      que le chiffre et laisse donc la caractere \n comme etant le 
+         *                      prochain objet a scanner, donc si nous voulons lire un autre ligne 
+         *                      de caractere on doit "eliminer" le \n, ce qui peut etre fait avec la
+         *                      ligne scanner1.nextLine())
          */
 
         System.out.println("What is your favorite food?");
