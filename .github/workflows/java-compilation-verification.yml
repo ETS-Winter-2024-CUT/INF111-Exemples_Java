@@ -38,6 +38,6 @@ jobs:
             echo "Compilation de: $file"
             if ! javac "$file"; then
               echo "Erreur de compilation pour: $file"
-              exit 1  # Arrêt du script en cas d'erreur de compilation
+              exit 1
             fi
           done < sources.txt
