@@ -1,0 +1,43 @@
+name: Java Compilation
+
+# on:
+#   # Déclencher le workflow sur les PRs lorsqu'un fichier Java est modifié.
+#   pull_request:
+#     paths:
+#       - '**.java'
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  java-compilation:
+    runs-on: ${{ matrix.os }}
+
+    name: Distrubution ${{ matrix.distribution }}, Système ${{ matrix.os }})
+    strategy:
+      matrix:
+        distribution: [ 'zulu', 'temurin' ]
+        os: [ 'ubuntu-latest', 'macos-latest', 'windows-latest' ]
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@main
+
+      - name: Préparation de Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: ${{ matrix.distribution }}
+          java-version: '17'
+
+      - name: Compilation des fichiers Java
+        run: |
+          find . -name "*.java" > sources.txt  # Créer et enregistrer la liste de tous les fichiers
+          while IFS= read -r file; do
+            echo "Compilation de: $file"
+            if ! javac "$file"; then
+              echo "Erreur de compilation pour: $file"
+              exit 1  # Arrêt du script en cas d'erreur de compilation
+            fi
+          done < sources.txt
